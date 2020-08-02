@@ -1,12 +1,12 @@
 package units;
 
-import commonUnit.unitMakeTime;
-import commonUnit.unitPrice;
+import common.unit.UnitCount;
+import common.unit.unitHpMp;
+import common.unit.unitMakeTime;
+import common.unit.unitPrice;
 import unit.GroundUnit;
 import unit.Healable;
 import unit.Unit;
-import commonUnit.unitCount;
-import commonUnit.unitHpMp;
 
 
 /**
@@ -15,7 +15,7 @@ import commonUnit.unitHpMp;
  */
 public class Marine extends Unit implements GroundUnit, Healable{
 	
-	public static int unitNum = 0;	// 마린의 유닛 수
+	//public static int unitNum = 0;	// 마린의 유닛 수
 	
 	/* 디폴트 생성자 
 	 * hp, hp, attack, defense 초기화 
@@ -33,7 +33,7 @@ public class Marine extends Unit implements GroundUnit, Healable{
 	}
 	@Override
 	public void move(int x, int y) {	// unit 추상클래스 구현
-		System.out.println("마린이 " + x + ", " + y + "만큼 움직입니다.");
+		System.out.println("마린이 (" + x + "," + y + ")만큼 움직입니다.");
 	}
 	@Override
 	public void stop() {	// unit 추상클래스 구현
@@ -54,7 +54,7 @@ public class Marine extends Unit implements GroundUnit, Healable{
 	}
 	@Override
 	public void getPopulationNum() {	// unit 추상클래스 구현
-		this.populationCount = unitCount.MARINE_COUNT;
+		this.populationCount = UnitCount.MARINE_COUNT;
 	}
 	@Override
 	public void getUnitNum() {	// unit 추상클래스 구현 - 마린생성시 호출, 마린수 +1
@@ -81,6 +81,8 @@ public class Marine extends Unit implements GroundUnit, Healable{
 		getSound();
 		Thread.sleep(1000);
 		walk();
+		Thread.sleep(1000);
+		move(1, 1);
 		Thread.sleep(1000);
 		attack();
 		Thread.sleep(1000);

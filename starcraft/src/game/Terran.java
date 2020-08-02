@@ -1,4 +1,4 @@
-package gameTest;
+package game;
 
 /* 테란 */
 public class Terran {
@@ -45,6 +45,12 @@ public class Terran {
 	}
 	public void setMaxPopulationCount(int maxPopulationCount) {
 		this.maxPopulationCount = maxPopulationCount;
+	}
+	
+	// addCount 만큼 Terran의 최대 인구수 증가
+	public void addMaxPopulationCount(int addCount) {
+		this.maxPopulationCount += addCount;
+		System.out.println("최대 인구수: " + this.maxPopulationCount);
 	}
 
 }

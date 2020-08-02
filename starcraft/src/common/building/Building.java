@@ -1,4 +1,4 @@
-package commonBuilding;
+package common.building;
 
 
 /**

@@ -1,11 +1,11 @@
-package commonUnit;
+package common.unit;
 
 
 /**
  * @author 주현
  * 각 유닛별 인구 수
  */
-public class unitCount {
+public class UnitCount {
 	public static final int SCV_COUNT = 1;
 	
 	public static final int MARINE_COUNT = 1;

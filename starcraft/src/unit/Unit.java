@@ -20,8 +20,6 @@ public abstract class Unit {
 	protected String sound;	 // Unit »ç¿îµå
 	
 	
-	
-	
 	public int getHp() {
 		return hp;
 	}

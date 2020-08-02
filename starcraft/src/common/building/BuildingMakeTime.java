@@ -1,11 +1,11 @@
-package commonBuilding;
+package common.building;
 
 
 /**
  * @author 주현
  * 각 건물별 생산 시간
  */
-public class buildingMakeTime {
+public class BuildingMakeTime {
 	public static final int COMMANDCENTER_TIME = 75;
 	
 	public static final int SUPPLYDEPOT_TIME = 25;

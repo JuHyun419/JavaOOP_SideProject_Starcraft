@@ -1,8 +1,10 @@
-package gameTest;
+package game;
 
 import java.util.Scanner;
 
-import commonUnit.unitMakeTime;
+import common.building.BuildingMakeTime;
+import common.unit.UnitCount;
+import common.unit.unitMakeTime;
 import units.Marine;
 import units.Scv;
 
@@ -18,7 +20,7 @@ class ScvGetMoneyThread extends Terran implements Runnable{
 			 while(true) {
 				 System.out.println("SCV가 돈을 벌고있습니다 .......");
 				 Thread.sleep(10000);
-				 
+				 break;
 			 }
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -28,7 +30,7 @@ class ScvGetMoneyThread extends Terran implements Runnable{
 }
 
 public class GameTest {
-	public static Scanner scan = new Scanner(System.in);
+	public static final Scanner scan = new Scanner(System.in);
 	
 	public static void showInit() throws InterruptedException {
 		System.out.println("┌--------------------------------------------------------------------------------┐");
@@ -50,13 +52,18 @@ public class GameTest {
 
 	public static void main(String[] args) throws InterruptedException {
 		showInit();
+		
+		
+		/*
+		 * Param: 미네랄, 가스, 현재 인구수, 최대 인구수
+		 */
 		Terran terran = new Terran(500, 500, 4, 10);
 		Scv scv = new Scv();
 		scv.setUnitNum(4);
 		
 		while(true) {
 			System.out.println("건물을 선택해주세요 ......... ");
-			System.out.println("1. 배럭, 2. 팩토리, 3. 스타포트");
+			System.out.println("1. 배럭, 2. 팩토리, 3. 스타포트, 4. 종료");
 			int menu = scan.nextInt();
 			
 			if(menu == 1) {
@@ -78,12 +85,40 @@ public class GameTest {
 				if(unitChoice == 1) {	
 					if(terran.getMineral() < 50) {
 						System.out.println("현재 미네랄이 부족합니다........ 미네랄을 캐세요.");
-					} else {
+						
+					/*
+					 * 현재 인구수 + 뽑으려는 유닛의 인구수가 최대 인구수보다 커질때(같은 경우도 유닛 뽑을 수 있음)
+					 */
+					} else if(terran.getNowPopulationCount() + UnitCount.MARINE_COUNT > terran.getMaxPopulationCount()) {
+						System.out.println("Additional Supply depots required...");
+						// 커맨드센터 & 서플라이디팟 생성
+						System.out.println("커맨드센터 or 서플라이디팟을 생성해주세요.(커맨드센터: 1, 서플라이디팟: 2");
+						int selectDepots = scan.nextInt();
+						
+						if(selectDepots == 1) {
+							System.out.println("커맨드센터가 " + BuildingMakeTime.COMMANDCENTER_TIME + "초 뒤에 생성됩니다...");
+							Thread.sleep(3000);
+							
+							System.out.println("최대 인구수가 10 증가 되었습니다.");
+							terran.addMaxPopulationCount(10);
+						} else if(selectDepots == 2) {
+							System.out.println("서플라이 디팟이 " + BuildingMakeTime.SUPPLYDEPOT_TIME + "초 뒤에 생성됩니다...");
+							Thread.sleep(2000);
+							
+							System.out.println("최대 인구수가 8 증가 되었습니다.");
+							terran.addMaxPopulationCount(8);
+						}
+					}
+					
+					else {
 						System.out.println("마린이 " + unitMakeTime.MARINE_TIME + "초 뒤에 생성됩니다...");
 						Thread.sleep(2000);
 
 						Marine marine = new Marine();
 						marine.getProfile();	// 전략 패턴(???)
+						terran.setNowPopulationCount(
+								terran.getNowPopulationCount() + UnitCount.MARINE_COUNT); // 테란 인구 유닛 증가
+						System.out.println("현재 인구수는 ");
 					}
 				}
 				
@@ -91,9 +126,11 @@ public class GameTest {
 				 
 			} else if(menu == 3) {
 				
+			} else if(menu == 4) {
+				System.out.println("프로그램을 종료합니다...");
+				break;
 			} else {
 				System.out.println("잘못 누르셨습니다..... 건물을 다시 선택해주세요!!");
-				continue;
 			}
 			
 		}
