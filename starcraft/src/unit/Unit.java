@@ -90,15 +90,15 @@ public abstract class Unit {
 
 	public abstract void attack();	// 공격
 	
-	public abstract void getMineral();	 // 미네랄 가격
+	public abstract int getMineral();	 // 미네랄 가격
 	
-	public abstract void getGas();		 // 가스 가격
+	public abstract int getGas();		 // 가스 가격
 	
-	public abstract void getPopulationNum(); // 인구 수
+	public abstract int getPopulationNum(); // 인구 수
 	
-	public abstract void getUnitNum();	 // 유닛 개수
+	public abstract int getUnitNum();	 // 유닛 개수
 	
-	public abstract void getMakeTime();	 // 유닛 생산시간
+	public abstract int getMakeTime();	 // 유닛 생산시간
 	
 	public abstract void getSound();	 // 유닛 음악
 	

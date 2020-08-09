@@ -45,25 +45,26 @@ public class Marine extends Unit implements GroundUnit, Healable{
 		System.out.println("공격력: " + attack + ", 방어력: " + defense);
 	}
 	@Override
-	public void getMineral() {	// unit 추상클래스 구현
-		this.mineral = unitPrice.MARINE_M;
+	public int getMineral() {	// unit 추상클래스 구현
+		return unitPrice.MARINE_M;
 	}
 	@Override
-	public void getGas() {	// unit 추상클래스 구현
-		this.gas = unitPrice.MARINE_G;
+	public int getGas() {	// unit 추상클래스 구현
+		return this.gas;
 	}
 	@Override
-	public void getPopulationNum() {	// unit 추상클래스 구현
-		this.populationCount = UnitCount.MARINE_COUNT;
+	public int getPopulationNum() {	// unit 추상클래스 구현
+		return UnitCount.MARINE_COUNT;
 	}
 	@Override
-	public void getUnitNum() {	// unit 추상클래스 구현 - 마린생성시 호출, 마린수 +1
+	public int getUnitNum() {	// unit 추상클래스 구현 - 마린생성시 호출, 마린수 +1
 		unitNum ++;
 		System.out.println("현재 마린 수는: " + unitNum + "마리 입니다.");
+		return this.unitNum;
 	}
 	@Override
-	public void getMakeTime() {	// unit 추상클래스 구현
-		this.makeTime = unitMakeTime.MARINE_TIME;
+	public int getMakeTime() {	// unit 추상클래스 구현
+		return unitMakeTime.MARINE_TIME;
 	}
 	@Override
 	public void getSound() {

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import common.building.BuildingMakeTime;
 import common.unit.UnitCount;
 import common.unit.unitMakeTime;
+import common.unit.unitPrice;
 import units.Marine;
 import units.Scv;
 
@@ -31,11 +32,12 @@ class ScvGetMoneyThread extends Terran implements Runnable{
 
 public class GameTest {
 	public static final Scanner scan = new Scanner(System.in);
+	private static final String makingPrefixStr = "초 뒤에 생성됩니다...";
 	
 	public static void showInit() throws InterruptedException {
 		System.out.println("┌--------------------------------------------------------------------------------┐");
 		System.out.println("│                                                                                │");
-		System.out.println("│                   스타크래프트                                                                                                 │");               
+		System.out.println("│                   스타크래프트                                                                                                                    │");               
 		System.out.println("│                                     Created By Lee Ju-Hyun on 2020.00.00       │");
 		System.out.println("└--------------------------------------------------------------------------------┘");
 
@@ -84,25 +86,29 @@ public class GameTest {
 				int unitChoice = scan.nextInt();
 				if(unitChoice == 1) {	
 					if(terran.getMineral() < 50) {
-						System.out.println("현재 미네랄이 부족합니다........ 미네랄을 캐세요.");
+						System.out.println("미네랄이 부족합니다... 미네랄을 캐고 있습니다.");
+						Thread.sleep(2000);
+						terran.setMineral(terran.getMineral() + (scv.getUnitNum() * 8));	// SCV 수 * 8만큼 미네랄 획득
+						System.out.println("현재 미네랄은: " + terran.getMineral() + "원 입니다.");
 						
 					/*
 					 * 현재 인구수 + 뽑으려는 유닛의 인구수가 최대 인구수보다 커질때(같은 경우도 유닛 뽑을 수 있음)
 					 */
 					} else if(terran.getNowPopulationCount() + UnitCount.MARINE_COUNT > terran.getMaxPopulationCount()) {
-						System.out.println("Additional Supply depots required...");
-						// 커맨드센터 & 서플라이디팟 생성
+						System.out.println("additional Supply Depots is required...");
+						
+						// 커맨드센터 or 서플라이디팟 생성
 						System.out.println("커맨드센터 or 서플라이디팟을 생성해주세요.(커맨드센터: 1, 서플라이디팟: 2");
 						int selectDepots = scan.nextInt();
 						
 						if(selectDepots == 1) {
-							System.out.println("커맨드센터가 " + BuildingMakeTime.COMMANDCENTER_TIME + "초 뒤에 생성됩니다...");
+							System.out.println("커맨드센터가 " + BuildingMakeTime.COMMANDCENTER_TIME + makingPrefixStr);
 							Thread.sleep(3000);
 							
 							System.out.println("최대 인구수가 10 증가 되었습니다.");
 							terran.addMaxPopulationCount(10);
 						} else if(selectDepots == 2) {
-							System.out.println("서플라이 디팟이 " + BuildingMakeTime.SUPPLYDEPOT_TIME + "초 뒤에 생성됩니다...");
+							System.out.println("서플라이 디팟이 " + BuildingMakeTime.SUPPLYDEPOT_TIME + makingPrefixStr);
 							Thread.sleep(2000);
 							
 							System.out.println("최대 인구수가 8 증가 되었습니다.");
@@ -111,7 +117,8 @@ public class GameTest {
 					}
 					
 					else {
-						System.out.println("마린이 " + unitMakeTime.MARINE_TIME + "초 뒤에 생성됩니다...");
+						terran.setMineral(terran.getMineral() - unitPrice.MARINE_M);
+						System.out.println("마린이 " + unitMakeTime.MARINE_TIME + makingPrefixStr);
 						Thread.sleep(2000);
 
 						Marine marine = new Marine();
