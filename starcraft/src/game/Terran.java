@@ -20,8 +20,8 @@ public class Terran {
 		this.nowPopulationCount = nowPopulationCount;
 		this.maxPopulationCount = maxPopulationCount;
 	}
-  
-
+	
+	
 	public int getMineral() {
 		return mineral;
 	}
