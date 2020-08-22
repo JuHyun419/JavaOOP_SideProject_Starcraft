@@ -80,7 +80,7 @@ public class GameTest {
 	public static void main(String[] args) throws InterruptedException {
 		
 		showInit();
-		scv.setUnitNum(7);
+		scv.setUnitNum(7); 
 		
 		ScvGetResourceThread scvGetResource = new ScvGetResourceThread(terran, scv.getUnitNum());
 		Thread scvThread = new Thread(scvGetResource);
