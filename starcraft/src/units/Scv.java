@@ -74,7 +74,7 @@ public class Scv extends Unit implements GroundUnit{
 	}
 
 	@Override
-	public void getProfile() {
+	public void printMarineInfo() {
 		// TODO Auto-generated method stub
 		
 	}

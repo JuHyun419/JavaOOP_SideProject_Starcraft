@@ -102,5 +102,5 @@ public abstract class Unit {
 	
 	public abstract void getSound();	 // À¯´Ö À½¾Ç
 	
-	public abstract void getProfile() throws InterruptedException;	 // À¯´Ö Á¤º¸
+	public abstract void printMarineInfo() throws InterruptedException;	 // À¯´Ö Á¤º¸
 }
