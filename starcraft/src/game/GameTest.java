@@ -42,7 +42,6 @@ public class GameTest {
 		System.out.println();
 	}
 	
-	
 	/**
 	 * 건물 선택 메뉴
 	 * @return
