@@ -2,7 +2,6 @@ package game;
 
 import java.util.Scanner;
 
-import common.building.BuildingMakeTime;
 import common.thread.ScvGetResourceThread;
 import common.unit.UnitCount;
 import common.unit.unitMakeTime;

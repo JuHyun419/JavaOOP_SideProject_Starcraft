@@ -9,6 +9,7 @@ import common.building.BuildingMakeTime;
  */
 public class Terran {
 	
+	// 테란, 저그, 프토 다 가지고 있는 속성이므로 종족으로 따로 뽑아내서 부모클래스로
 	private int mineral;	// 미네랄
 	private int gas;		// 가스
 	private int nowPopulationCount;	// 현재 인구수

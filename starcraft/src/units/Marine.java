@@ -13,7 +13,7 @@ import unit.Unit;
  * Marine 클래스
  * @author 주현
  */
-public class Marine extends Unit implements GroundUnit, Healable{
+public class Marine extends Unit implements GroundUnit, Healable {
 	
 	/* 디폴트 생성자 
 	 * hp, hp, attack, defense 초기화 
