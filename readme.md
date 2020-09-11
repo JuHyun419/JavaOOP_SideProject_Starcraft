@@ -7,3 +7,4 @@
 <img width="788" alt="클래스다이어그램 1" src="https://user-images.githubusercontent.com/50076031/90959574-da9bcf80-e4d6-11ea-8033-ecb2e33023b7.PNG">
 
 <img width="795" alt="클래스다이어그램 2" src="https://user-images.githubusercontent.com/50076031/90959578-dc659300-e4d6-11ea-8a94-dd49e540c18c.PNG">
+
